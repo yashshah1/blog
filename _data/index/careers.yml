@@ -1,0 +1,16 @@
+# careers section data
+# if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: Wolters Kluwer
+  link: https://wolterskluwer.com/products-services/our-portfolio/governance-risk-compliance.html
+  date: May 2019 - Feb 2020
+  job: Data Science Intern
+
+- name: Software Development Section, COEP
+  link: https://sdscoep.codes/
+  date: Apr 2019 - Apr 2020
+  job: Operations and Events Lead
+
+- name: Software Development Section, COEP
+  link: https://sdscoep.codes/
+  date: Apr 2018 - Apr 2019
+  job: Project Lead

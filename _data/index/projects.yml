@@ -1,0 +1,16 @@
+- name: 
+  descr: "
+  Some of the nice ones:
+  <ul>
+  <li><b>Image Deblurring</b>: Final year project that targets to beat state of the art generic deblurring methods.</li>
+<li><b>SQL Querying from JSON data</b>: Building a utility that allows running SQL queries on JSON data. </li>
+<li><b>yard-ts</b>: A set of highly optimized and dependency-free data-structures written in Typescript.</li>
+<li><b>IMA SSS Portal</b>: Built and end-to-end portal and admin tool for IMA to manage their SSS Scheme.</li>
+<li><b>Katkari Language Translator</b>: Translated and reconstructed sentences from Katkari to English.</li>
+<li><b>inux Command bc</b>: Built an arbitrary precision calculator with variables and history support.</li>
+<li><b>Open Source</b>: Contributed to OpenGenus/cosmos and Moodle (moodle.org/). </li>
+<li><b>Others</b>: asciificator - Image to ASCII art; Krypt - A naiive encryption-decryption tool built with
+Tkinter; Publication Data Repository, coep.tk, Internship Portal - Built and deployed on COEPs
+intranet while working with SDS, COEP. </li>
+  "
+  github: https://github.com/yashshah1
