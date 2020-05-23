@@ -24,7 +24,7 @@ Just a few clarifications:
 
 ## #1 - Google Drive can't purge files.
 
-After we zipped and uploaded the file, the next logical step was to unzip it, and things were looking to be really really bright, until they weren't
+After we zipped and uploaded the file, the next logical step was to unzip it, and things were looking to be really really bright, until they weren't.
 
 After I set unzip to run for a night, I woke up with a very common error, saying `Runtime has timed out`. Cool, no biggie, just delete all the files and restart yeah? Except no.
 
@@ -34,7 +34,7 @@ A few panicky Google searches didn't lead me anywhere. _Was the problem so stupi
 
 Maybe an hour or so later, of doing the worst thing a computer engineer can do: "Do the same actions and expect different results", I noticed that the free space was now 40GB, which hit me to my first realisation.
 
-**Google Drive doesn't really delete a large number of files at once, it does it in batches; when I hit delete on the folder with 120k or so images, the Drive Engine would trash maybe 300 items at once and I had to manually clear the trash**
+**Google Drive doesn't really delete a large number of files at once, it does it in batches; when I hit delete on the folder with 120k or so images, the Drive Engine would trash maybe 300 items at once and I had to manually clear the trash.**
 
 I mean, as a student who's always been in praise of how robust and star-spangled awesome Google's architecture was, I realised, that it wasn't perfect. (Yes I know, the scale of GDrive is probably in petabytes and being able to handle so much data is already impressive beyond doubts, but can you really blame me for being a _**little**_ greedy?)
 
@@ -86,7 +86,7 @@ Back to googling, luckily this time, the Colab team did have an official solutio
 
 ![Timeout](https://raw.githubusercontent.com/yashshah1/blog/master/assets/2/timeout.png)
 
-Basically what they say is: I/O operations such as `os.listdir()` on a mounted drive are _asynchronous_(Ugh, at this point I start to hate this word). This had a two fold problem, not only would the files get read, my Python code would continue like nothing was wrong. **The least they could do is throw an exception**.
+Basically what they say is: I/O operations such as `os.listdir()` on a mounted drive are _asynchronous_ (Ugh, at this point I start to hate this word). This had a two fold problem, not only would the files get read, my Python code would continue like nothing was wrong. **The least they could do is throw an exception**.
 
 They suggest moving folders into smaller subfolders, so that Colab wouldn't time out. I obviously couldn't do that in Colab because the writes were asynchoronous too. **UGH**.
 
