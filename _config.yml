@@ -19,6 +19,7 @@ markdown: kramdown
 highlighter: rouge
 excerpt_separator: <!--more-->
 permalink: /articles/:year-:month/:title
+google_analytics: UA-167434478-1
 
 kramdown:
   auto_ids: true
