@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why I dislike Google Colab
-excerpt: I mean, I dislike it, but still <i>have</i> to use it.
+excerpt: I mean, I it's a love-hate kinda thing
 date: 2020-05-22 23:00:00
 categories: [tech, experience]
 comments: true
