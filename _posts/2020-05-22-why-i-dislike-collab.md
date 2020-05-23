@@ -58,6 +58,8 @@ A mounted drive, by all my experience and intuitions was just supposed to be an 
 
 But that wasn't happening, and I was baffled. Again, like before, a lot of panicked searches later, hoping to see _something_ in the documentation, I come across [this](https://github.com/googlecolab/colabtools/issues/287#issuecomment-478098785). It's a reply from the Colab team on an old issue raised by `@mantou16` (Thank you!)
 
+![Async Writes](https://raw.githubusercontent.com/yashshah1/blog/master/assets/2/async-writes.png)
+
 **What this means is, when I write onto the mounted drive, there is no guarantee when the files _actually_ show up on my drive, it could be in a few seconds or an hour. _OH AND YES_, If you're wondering, if I timeout before that call finishes, then those files wanish. _POOF!_**
 
 Note: Google has a function `drive.flush_and_unmount()` which you can run to flush all your writes, but it forces you to unmount the drive, which isn't really helpful. Also, if you haven't guessed, the runtime of this function is also indeterminate, it could take a minute, or more than an hour. And yes if the timeout happens when this is running, again _POOF!_
@@ -81,6 +83,8 @@ I added a few (okay more than a few) sanity checks, and as suspected, something 
 It showed me a total training dataset size of **_0 images_**. What? Back to more checks; Images were there on the drive, the path was correct, drive had mounted accurately. All seemed to be right except it wasn't working.
 
 Back to googling, luckily this time, the Colab team did have an official solution. Read it in their words [here](https://research.google.com/colaboratory/faq.html#drive-timeout).
+
+![Timeout](https://raw.githubusercontent.com/yashshah1/blog/master/assets/2/timeout.png)
 
 Basically what they say is: I/O operations such as `os.listdir()` on a mounted drive are _asynchronous_(Ugh, at this point I start to hate this word). This had a two fold problem, not only would the files get read, my Python code would continue like nothing was wrong. **The least they could do is throw an exception**.
 
