@@ -4,6 +4,7 @@ title: Why I dislike Google Colab
 excerpt: I mean, I it's a love-hate kinda thing
 date: 2020-05-22 23:00:00
 categories: [tech, experience]
+comments: true
 ---
 
 **Disclaimer**: _I've used [Colab](https://colab.research.google.com/) quite a bit through my undergraduate work. It's a huge life saver, especially when you're looking for a training job with a low to mid level computing load. It's got amazing network speeds and the inbuilt support for mounting Drive folders right out of the box is just something else! Oh did I mention, the fact that Google gives you a K80 (or better) just for free is **wow**! But like they say, there is no free meal, neither is this (of sorts)._<br /><br />
