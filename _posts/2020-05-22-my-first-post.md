@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Welcome to this site!"
+title: Welcome to this site!
 date: 2020-05-22 12:00:00
 categories: [intro]
 comments: true
