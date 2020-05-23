@@ -92,6 +92,9 @@ a.read-more {
   .post-header {
     margin: 0 auto 50px;
   }
+  @include media-query($medium-screen) {
+    width: 50%
+  }
 }
 
 #post h1 {
