@@ -5,7 +5,7 @@
 #
 title: Yash Shah's blog
 email:
-description: A set of never-to-be seen posts!
+description: My blog for things I find interesting.
 url: https://yashshah1.github.io/blog
 keywords: ["blog", "jekyll"]
 
@@ -44,7 +44,6 @@ owner:
   facebook: #username
   google:
     plus: #username
-    analytics:
     verify:
     ad-client:
     ad-slot:
