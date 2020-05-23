@@ -47,7 +47,7 @@ A part of me thought, let's just start two simultaneous sessions to unzip, but (
 
 The same boilerplate happened, mount the drive, change to the right directory and run `!unzip ...`. Done right? Now all I had to do is comeback sometime later and restart. But wait, why do all that? I'm not from the stone age, I can make my life easier.
 
-A quick Google search for bash for loops, and I was overjoyed with what the final result. A clean forloop that would run for each of the 7 zips and `echo` the status once it's done.
+A quick Google search about for loops in bash later, I was overjoyed with what the final result looked like. A clean for loop that would run for each of the 7 zips and `echo` the status once it's done.
 
 A routine status check 2 or so hours later, and I noticed something, which I so desperately wanted to shrug off to browser caching (oh, I prayed this would be the case).
 
@@ -65,13 +65,13 @@ Note: Google has a function `drive.flush_and_unmount()` which you can run to flu
 
 ## #3 - Reads from a mounted GDrive are **_also asynchronous_**
 
-The above problem caused us a lot of headaches. To circumvent it. We decided to take the _normal_ way out.
+#2 caused us a lot of headaches. To circumvent it. We decided to take the _normal_ way out.
 
 I set up the GDrive client for Windows(Yes, Google has long promised one for Linux, but hasn't delivered.), and started uploading my dataset, unzipped, a single image at a time (UGH!)
 
 Fast Forward 3 days, the dataset is uploaded. No more unzipping required 🥳🥳.
 
-Our training loop has a simple DataLoader which uses `os.listdir()` and `f.read()`, the typical.
+Our training loop has a simple DataLoader which uses `os.listdir()` and `imread()`, the typical.
 
 Just to recap, ~340k images; 7 folders, 6 of which have 50k images and the last one has ~40k. We begin training, and BOOM it works, WOHOOO! right? Wrong.
 
