@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why I dislike Google Colab
-excerpt: I mean, I it's a love-hate kinda thing
+excerpt: I mean, it's a love-hate kinda thing
 date: 2020-05-22 23:00:00
 categories: [tech, experience]
 comments: true
@@ -61,7 +61,7 @@ But that wasn't happening, and I was baffled. Again, like before, a lot of panic
 
 ![Async Writes](https://raw.githubusercontent.com/yashshah1/blog/master/assets/2/async-writes.png)
 
-**What this means is, when I write onto the mounted drive, there is no guarantee when the files _actually_ show up on my drive, it could be in a few seconds or an hour. _OH AND YES_, If you're wondering, if I timeout before that call finishes, then those files wanish. _POOF!_**
+**What this means is, when I write onto the mounted drive, there is no guarantee when the files _actually_ show up on my drive, it could be in a few seconds or an hour. _OH AND YES_, If you're wondering, if I timeout before that call finishes, then those files vanish. _POOF!_**
 
 Note: Google has a function `drive.flush_and_unmount()` which you can run to flush all your writes, but it forces you to unmount the drive, which isn't really helpful. Also, if you haven't guessed, the runtime of this function is also indeterminate, it could take a minute, or more than an hour. And yes if the timeout happens when this is running, again _POOF!_
 
