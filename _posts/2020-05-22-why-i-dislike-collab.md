@@ -20,7 +20,7 @@ As our experimentation continued, we wanted to explore an alternative approach t
 Our training dataset was approximately 45GB (340k images) in size and we decided to get a Google One subscription and pay a nominal fee of 130 INR a month and it was sorted.<br /><br />
 Just a few clarifications:
 
-- We had RDP(-ish) access to our college PC and decided to use that to upload our 45GB to the drive. This was post lockdown and the badnwidth would be phenomenal.
+- We had RDP(-ish) access to our college PC and decided to use that to upload our 45GB to the drive. This was post lockdown and the bandwidth would be phenomenal.
 - We (obviously) weren't going to upload a folder with that many images, it would take ages. We'd zipped it up so it would be a single file upload, and then unzip it by using Colab (it had access to GDrive, and would be a piece of cake (or so I thought))
 
 ## #1 - Google Drive can't purge files.
