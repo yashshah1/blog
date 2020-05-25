@@ -83,6 +83,4 @@ These two might not seem like the happiest things in the world, but they teach m
 
 They also teach me that I might (and probably won't ever) know everything, but knowing what I don't know is a good place to be in.
 
-
-<br /><br />
-This is all for you, for now!
+<br />This is all for you, for now!
