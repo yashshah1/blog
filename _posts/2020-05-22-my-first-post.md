@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Welcome to this site!
-date: 2020-05-22 12:00:00
+date: 2020-05-22 12:00:00 +0530
 categories: [intro]
 excerpt: The cliche first post
 ---

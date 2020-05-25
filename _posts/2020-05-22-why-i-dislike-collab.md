@@ -2,7 +2,7 @@
 layout: post
 title: Why I dislike Google Colab
 excerpt: I mean, it's a love-hate kinda thing
-date: 2020-05-22 23:00:00
+date: 2020-05-22 23:00:00 +0530
 categories: [tech, experience]
 comments: true
 ---
