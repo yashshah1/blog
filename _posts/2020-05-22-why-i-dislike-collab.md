@@ -87,11 +87,11 @@ Back to googling, luckily this time, the Colab team did have an official solutio
 
 ![Timeout](https://raw.githubusercontent.com/yashshah1/blog/master/assets/2/timeout.png)
 
-Basically what they say is: I/O operations such as `os.listdir()` on a mounted drive are _asynchronous_ (Ugh, at this point I start to hate this word). This had a two fold problem, not only would the files get read, my Python code would continue like nothing was wrong. **The least they could do is throw an exception**.
+Basically what they say is: I/O operations such as `os.listdir()` on a mounted drive are _asynchronous_ (Ugh, at this point I start to hate this word). This had a two fold problem, not only would the files not get read, my Python code would continue like nothing was wrong. **The least they could do is throw an exception**.
 
 They suggest moving folders into smaller subfolders, so that Colab wouldn't time out. I obviously couldn't do that in Colab because the writes were asynchoronous too. **UGH**.
 
-So back to the GDrive client. Wrote a python script to divide it into 341 folders, each having 1k or so files, and the upload resumes
+So back to the GDrive client. Wrote a python script to divide it into 341 folders, each having 1k or so files, and the upload resumes. 
 
 ## #4 - 12 hours of a session time is a scam.
 
