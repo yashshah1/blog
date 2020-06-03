@@ -46,7 +46,7 @@ capture description %}{{ site.description }}{% endcapture %} {% endif %}
   <meta property="og:image" content="{{ site.url }}/img/leonids-logo.png" />
   {% endif %}
   <title>{{ title }}</title>
-
+  <link rel="manifest" href="{{ site.url }}/manifest.json" />
   <!-- CSS files -->
   <link rel="stylesheet" href="{{ site.url }}/css/font-awesome.min.css" />
   <link rel="stylesheet" href="{{ site.url }}/css/main.css" />
@@ -57,13 +57,12 @@ capture description %}{{ site.description }}{% endcapture %} {% endif %}
   />
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape
   }}" href="{{ "/feed.xml" | prepend: site.url }}" />
-
+  <link rel="manifest" href="{{ site.url }}/manifest.json" />
   <!-- Icons -->
   <!-- 16x16 -->
   <link rel="shortcut icon" href="{{ site.url }}/favicon.ico" />
   <!-- 32x32 -->
   <link rel="shortcut icon" href="{{ site.url }}/favicon.png" />
-  {% if jekyll.environment == 'production' %}
-  {% include analytics.html %}
-  {% endif %}
+  {% if jekyll.environment == 'production' %} {% include analytics.html %} {%
+  endif %} {% include pwa-sw.html %}
 </head>
