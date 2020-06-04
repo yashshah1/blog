@@ -3,45 +3,73 @@ importScripts(
 );
 if (workbox) {
   workbox.googleAnalytics.initialize();
-  const { registerRoute } = workbox.routing;
-  const { CacheFirst, StaleWhileRevalidate, NetworkFirst } = workbox.strategies;
-  const { ExpirationPlugin } = workbox.expiration;
+  const {
+    routing: { registerRoute },
+    strategies: { CacheFirst, StaleWhileRevalidate },
+    cacheableResponse: { CacheableResponsePlugin },
+    expiration: { ExpirationPlugin },
+  } = workbox;
+
   registerRoute(
-    ({ request }) => request.destination === "style",
+    ({ request: { destination } }) => destination === "style",
     new StaleWhileRevalidate({
       cacheName: "css-cache",
+      plugins: [
+        new ExpirationPlugin({ maxEntries: 20 }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
+      ],
     })
   );
 
   registerRoute(
-    ({ request }) => request.destination === "script",
+    ({ request: { destination } }) => destination === "script",
     new StaleWhileRevalidate({
       cacheName: "js-cache",
+      plugins: [
+        new ExpirationPlugin({ maxEntries: 20 }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
+      ],
     })
   );
 
   registerRoute(
-    ({ url }) => url.pathname.startsWith("/blog/articles/"),
-    new StaleWhileRevalidate({
-      cacheName: "post-cache",
-    })
+    ({ url: { pathname } }) => pathname.startsWith("/blog/articles/"),
+    new StaleWhileRevalidate({ cacheName: "post-cache" })
   );
 
   registerRoute(
-    ({ url }) => url.pathname === "/blog/",
-    new StaleWhileRevalidate({
-      cacheName: "post-listing-cache",
-    })
+    ({ url: { pathname } }) => pathname === "/blog/",
+    new StaleWhileRevalidate({ cacheName: "post-listing-cache" })
   );
 
   registerRoute(
-    ({ request }) => request.destination === "image",
+    ({ request: { destination } }) => destination === "image",
     new CacheFirst({
       cacheName: "image-cache",
       plugins: [
         new ExpirationPlugin({
           maxEntries: 20,
           maxAgeSeconds: 7 * 24 * 60 * 60,
+        }),
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
+      ],
+    })
+  );
+
+  registerRoute(
+    ({ url: { origin } }) => origin === "https://fonts.googleapis.com",
+    new StaleWhileRevalidate({ cacheName: "google-fonts-stylesheets" })
+  );
+
+  registerRoute(
+    ({ url: { origin } }) => origin === "https://fonts.gstatic.com",
+    new CacheFirst({
+      cacheName: "google-fonts-webfonts",
+      plugins: [
+        new CacheableResponsePlugin({ statuses: [0, 200] }),
+        new ExpirationPlugin({
+          maxAgeSeconds: 60 * 60 * 24 * 365,
+          maxEntries: 30,
         }),
       ],
     })

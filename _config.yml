@@ -71,3 +71,6 @@ owner:
   telegram: #username
 
 theme: jekyll-theme-slate
+
+plugins:
+  - jekyll-gist
