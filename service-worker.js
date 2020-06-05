@@ -38,6 +38,19 @@ if (workbox) {
   );
 
   registerRoute(
+    ({ url: { pathname } }) => pathname.startsWith("/blog/fonts/"),
+    new StaleWhileRevalidate({
+      cacheName: "font-cache",
+      plugins: [
+        new ExpirationPlugin({
+          maxEntries: 5,
+          maxAgeSeconds: 30 * 24 * 60 * 60,
+        }),
+      ],
+    })
+  );
+
+  registerRoute(
     ({ url: { pathname } }) => pathname === "/blog/",
     new StaleWhileRevalidate({ cacheName: "post-listing-cache" })
   );
