@@ -23,7 +23,8 @@ When this story reached the eyes of David Dunning, a professor of Psychology at 
 
 > _“The problem with people like this is that they are so stupid that they have no idea how stupid they are… You’ll have to be relatively intelligent to realize how stupid you are.” - John Cleese_
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Dunning%E2%80%93Kruger_Effect_01.svg" />
+
+{% include image.html url="https://yashshah1.github.io/blog/assets/3/dunning-kruger.svg" sourceurl="https://commons.wikimedia.org/wiki/File:Dunning%E2%80%93Kruger_Effect_01.svg" %}
 
 It is the relationship between _how good you think you are_ versus _how good you are_.
 
@@ -35,7 +36,7 @@ As time progresses, and as you continue learning about something, you start to r
 
 For those unfamiliar with the phrase, it is a phenomenon in which one doubts their successes/accomplishments. Instead of hard work and skill, their success comes from people’s inability to see that they are a fraud and have been unknowingly deceiving everyone. ([more](https://en.wikipedia.org/wiki/Impostor_syndrome)).
 
-![Impostor](https://yashshah1.github.io/blog/assets/3/impostor.png)
+{% include image.html url="https://yashshah1.github.io/blog/assets/3/impostor.png" %}
 
 For anyone who has known me personally, will testify to the fact that I am shy of stepping up to the mantle to claim any spotlight which often gets attributed to the idea that Yash might be underconfident, which isn't the case (most of the times).
 
@@ -53,9 +54,9 @@ To my surprise, my project was graded to be the highest amongst those of the sam
 
 In my humble defence, this is something that is _very very_ popular in the field of Computer Engineering and Software Development.
 
-![google search](https://yashshah1.github.io/blog/assets/3/google.png)
+{% include image.html url="https://yashshah1.github.io/blog/assets/3/google.png" %}
 
-Everyone is trying to recognise and solve this weird fix they're in, and I can see why it is so common between software developers:
+Everyone is trying to recognize and solve this weird fix they're in, and I can see why it is so common between software developers:
 
 1. It's a low barrier open-to-all field
    - Kick starting your journey into software development or data science is simpler than ever. All you need is access to a stable internet connection and a computer. There is a universe of free tutorials and resources available on the internet.
@@ -68,8 +69,8 @@ Everyone is trying to recognise and solve this weird fix they're in, and I can s
    - This is bound to make anyone starting out a little (maybe more than a little) overwhelmed.
 
 To wrap it up:
+{% include image.html url="https://yashshah1.github.io/blog/assets/3/impostor-xkcd.png" sourceurl="https://imgs.xkcd.com/comics/impostor_syndrome.png" %}
 
-<img src="https://imgs.xkcd.com/comics/impostor_syndrome.png">
 
 ## Conclusion
 

@@ -3,6 +3,7 @@ layout: post
 title: Why I dislike Google Colab
 excerpt: I mean, it's a love-hate kinda thing
 date: 2020-05-22 23:00:00 +0530
+# updated_at: 2020-06-05 12:00:00 +0530
 categories: [tech, experience]
 comments: true
 ---
@@ -60,7 +61,7 @@ A mounted drive, by all my experience and intuitions was just supposed to be an 
 
 But that wasn't happening, and I was baffled. Again, like before, a lot of panicked searches later, hoping to see _something_ in the documentation, I come across [this](https://github.com/googlecolab/colabtools/issues/287#issuecomment-478098785). It's a reply from the Colab team on an old issue raised by `@mantou16` (Thank you!)
 
-![Async Writes](https://yashshah1.github.io/blog/assets/2/async-writes.png)
+{% include image.html url="https://yashshah1.github.io/blog/assets/2/async-writes.png" %}
 
 **What this means is, when I write onto the mounted drive, there is no guarantee when the files _actually_ show up on my drive, it could be in a few seconds or an hour. _OH AND YES_, If you're wondering, if I timeout before that call finishes, then those files vanish. _POOF!_**
 
@@ -86,11 +87,11 @@ It showed me a total training dataset size of **_0 images_**. What? Back to more
 
 Back to googling, luckily this time, the Colab team did have an official solution. Read it in their words [here](https://research.google.com/colaboratory/faq.html#drive-timeout).
 
-![Timeout](https://yashshah1.github.io/blog/assets/2/timeout.png)
+{% include image.html url="https://yashshah1.github.io/blog/assets/2/timeout.png" %}
 
 Basically what they say is: I/O operations such as `os.listdir()` on a mounted drive are _asynchronous_ (Ugh, at this point I start to hate this word). This had a two fold problem, not only would the files not get read, my Python code would continue like nothing was wrong. **The least they could do is throw an exception**.
 
-They suggest moving folders into smaller subfolders, so that Colab wouldn't time out. I obviously couldn't do that in Colab because the writes were asynchoronous too. **UGH**.
+They suggest moving folders into smaller subfolders, so that Colab wouldn't time out. I obviously couldn't do that in Colab because the writes were asynchronous too. **UGH**.
 
 So back to the GDrive client. Wrote a python script to divide it into 341 folders, each having 1k or so files, and the upload resumes.
 
@@ -100,7 +101,7 @@ Fast Forward 4 more days, upload has finished. And Colab finally agrees to read 
 
 The training runs super super smooth, where it now took around 10 hours per epoch (that's an ungodly 56% increase), and I think to myself that maybe it was all worth it.
 
-Learning from my experience with asynchoronous writes, I decided to change the save frequency to every 20k iterations, so that even if I did lose some training time, it wouldn't be a lot.
+Learning from my experience with asynchronous writes, I decided to change the save frequency to every 20k iterations, so that even if I did lose some training time, it wouldn't be a lot.
 
 The first few days were a breeze, I'd restart it twice a day and it went very well. After which some sort of Google Algo flagged my account because it would refuse to give me a GPU runtime, and if it did, it would timeout within the hour.
 
@@ -110,7 +111,7 @@ Our effective training time reduced to 12 hours every 2 days or so. So all the g
 
 This problem is listed as the last one because Google warns us quite explicitly that they prefer interactive users. Even for Colab Pro, Google doesn't _guarantee_ a runtime always, they just say that there's a higher chance that you'll get one
 
-![Colab Pro](https://yashshah1.github.io/blog/assets/2/colab-pro.png)
+{% include image.html url="https://yashshah1.github.io/blog/assets/2/colab-pro.png" %}
 
 I just got a little greedy and decided to work around the limitations Google set for me. For a few, I emerged victorious; for others, I humbly accept defeat.
 
