@@ -1,4 +1,4 @@
-// Post listing
+
 .post-listing {
   background-color: $white;
   position: absolute;
@@ -28,12 +28,12 @@
   padding-right: 20px;
 }
 
-// Post Section
+
 section.post {
 	margin-bottom: 30px;
 }
 
-// Back home button
+
 
 .back-home a {
   font-size: 13px;
@@ -44,7 +44,7 @@ section.post {
   padding: 0.5em 1em;
 }
 
-// Post title
+
 .post-title {
 
 }
@@ -59,7 +59,7 @@ section.post {
 	}
 }
 
-// Post meta
+
 .post-meta {
   font-size: 13px;
   font-weight: bold;
@@ -79,13 +79,13 @@ section.post {
   }
 }
 
-// Read more buttons
+
 
 a.read-more {
   padding: 5px 8px;
 }
 
-// Post content
+
 
 #post {
   padding-bottom: 50px;
@@ -93,6 +93,12 @@ a.read-more {
     margin: 0 auto 50px;
   }
   @include media-query($medium-screen) {
+    width: 80%
+  }
+  @include media-query($large-screen) {
+    width: 60%
+  }
+  @include media-query($larger-screen) {
     width: 50%
   }
 }
@@ -158,7 +164,7 @@ a.read-more {
   }
 }
 
-// Shares Buttons
+
 .share-buttons {
   padding-top: 1em;
   border-top: 1px solid #ddd;

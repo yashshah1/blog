@@ -1,7 +1,6 @@
 /* Buttons
    ========================================================================== */
 
-// General
 .btn {
   display: inline-block;
   margin-bottom: 20px;
@@ -27,7 +26,6 @@
   }
 }
 
-// Success button
 .btn-success {
   background-color: $success;
   color: $white;
@@ -43,7 +41,6 @@
   }
 }
 
-// Warning button
 .btn-warning {
   background-color: $warning;
   color: $white;
@@ -59,7 +56,6 @@
   }
 }
 
-// Danger button
 .btn-danger {
   background-color: $danger;
   color: $white;
@@ -75,7 +71,7 @@
   }
 }
 
-// Information button
+
 .btn-info {
   background-color: $info;
   color: $white;
