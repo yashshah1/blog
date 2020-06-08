@@ -6,7 +6,6 @@ excerpt: There's a good chance this is applicable to you as well.
 categories: [personal]
 comments: true
 ---
-
 **Disclaimer**: _This is an article a little close to home, and it is written with the hopes that at least one person who reads this relates to what I have to say._
 
 **Disclaimer 2**: _This article might get long, and will go on more than one tangent, but I hope to connect all of it at the end._
@@ -19,7 +18,7 @@ The above-mentioned snippet isn't fiction, but is, infact, [a real case](https:/
 
 When this story reached the eyes of David Dunning, a professor of Psychology at Cornell, he couldn't conclude whether the robber was just incompetent, or dumb enough that he couldn't tell how incompetent he was. Dunning was joined by a graduate student Justin Kruger to further study his behaviour.
 
-## The Dunning-Kruger Effect
+# The Dunning-Kruger Effect
 
 > _“The problem with people like this is that they are so stupid that they have no idea how stupid they are… You’ll have to be relatively intelligent to realize how stupid you are.” - John Cleese_
 
@@ -32,7 +31,7 @@ If you observe the graph, you see that everyone who starts at something (in my c
 
 As time progresses, and as you continue learning about something, you start to realize all the deficits in your knowledge and begin to fill them one at a time.
 
-## Impostor Syndrome
+# Impostor Syndrome
 
 For those unfamiliar with the phrase, it is a phenomenon in which one doubts their successes/accomplishments. Instead of hard work and skill, their success comes from people’s inability to see that they are a fraud and have been unknowingly deceiving everyone. ([more](https://en.wikipedia.org/wiki/Impostor_syndrome)).
 
@@ -72,7 +71,7 @@ To wrap it up:
 {% include image.html url="https://yashshah1.github.io/blog/assets/3/impostor-xkcd.png" sourceurl="https://imgs.xkcd.com/comics/impostor_syndrome.png" %}
 
 
-## Conclusion
+# Conclusion
 
 I believe that Impostor Syndrome might not be all bad, and the cloud has a silver lining.
 

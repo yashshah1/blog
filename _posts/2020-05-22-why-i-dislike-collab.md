@@ -15,7 +15,7 @@ For anyone who doesn't know what Colab is: It's this amazing SaaS(I think, corre
 Before I start my rant, I just want to get this cleared. Colab is _AMAZING_, it's got everything a student who wants access to fancy stuff but isn't willing to pay for hardware could wish for. It's got 12 hour runtimes, access to very fast internet, oh and I almost forgot, it's based of Linux, so you can do practically anything on it as Jupyter Supports `!` prefixes for `bash` commands. So you could, in practice, compile kernels or just execute a "Hello World" in [Brainf\*ck](https://en.wikipedia.org/wiki/Brainfuck) for all you care. <br /><br />
 Now, before you start screaming at me, Yes I know that Google recommends Colab only for interactive users (read: [Limits](https://research.google.com/colaboratory/faq.html#resource-limits)) and not for heavy training loads, but when I have such a thing in front of me, can you really blame me for wanting to abuse it? I mean, it's natural and if you're saying that you'd never thought of doing it, stop lying.<br /><br />
 
-## Backstory
+# Backstory
 
 For my senior year project, our group decided to tackle the problem statement of Image Deblurring, and we made some progress with it, and finally the day came when we had to begin training. Our college had given us access to a Quadro P1000 which was decent, but each epoch took us about a day to finish. <br /><br />
 As our experimentation continued, we wanted to explore an alternative approach to the same problem, but we were very reluctant to stop the training that we'd started a few weeks back. So I proposed that we try and use Colab, (because why not?) thinking I can circumvent the 12 hour runtime limit by restarting the session twice a day, all in all sounds like cool a plan. <br /><br />
@@ -25,7 +25,7 @@ Just a few clarifications:
 - We had RDP(-ish) access to our college PC and decided to use that to upload our 45GB to the drive. This was post lockdown and the bandwidth would be phenomenal.
 - We (obviously) weren't going to upload a folder with that many images, it would take ages. We'd zipped it up so it would be a single file upload, and then unzip it by using Colab (it had access to GDrive, and would be a piece of cake (or so I thought))
 
-## #1 - Google Drive can't purge files.
+# #1 - Google Drive can't purge files.
 
 After we zipped and uploaded the file, the next logical step was to unzip it, and things were looking to be really really bright, until they weren't.
 
@@ -41,7 +41,7 @@ Maybe an hour or so later, of doing the worst thing a computer engineer can do: 
 
 I mean, as a student who's always been in praise of how robust and star-spangled awesome Google's architecture was, I realised, that it wasn't perfect. (Yes I know, the scale of GDrive is probably in petabytes and being able to handle so much data is already impressive beyond doubts, but can you really blame me for being a _**little**_ greedy?)
 
-## #2 - Writes into a mounted GDrive are _asynchronous_
+# #2 - Writes into a mounted GDrive are _asynchronous_
 
 So after the colossal failure of unzipping it in one go. We thought, let's split up the huge folder into smaller folders with 50k images each so even if a timeout occurred, we would only need to clear 50k images and not the whole thing. Cool? Cool.
 
@@ -67,7 +67,7 @@ But that wasn't happening, and I was baffled. Again, like before, a lot of panic
 
 Note: Google has a function `drive.flush_and_unmount()` which you can run to flush all your writes, but it forces you to unmount the drive, which isn't really helpful. Also, if you haven't guessed, the runtime of this function is also indeterminate, it could take a minute, or more than an hour. And yes if the timeout happens when this is running, again _POOF!_
 
-## #3 - Reads from a mounted GDrive are **_also asynchronous_**
+# #3 - Reads from a mounted GDrive are **_also asynchronous_**
 
 #2 caused us a lot of headaches. To circumvent it. We decided to take the _normal_ way out.
 
@@ -95,7 +95,7 @@ They suggest moving folders into smaller subfolders, so that Colab wouldn't time
 
 So back to the GDrive client. Wrote a python script to divide it into 341 folders, each having 1k or so files, and the upload resumes.
 
-## #4 - 12 hours of a session time is a scam.
+# #4 - 12 hours of a session time is a scam.
 
 Fast Forward 4 more days, upload has finished. And Colab finally agrees to read the files, I see the magic number of 340k files, and I think to myself, YAY!
 
