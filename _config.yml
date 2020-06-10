@@ -36,8 +36,8 @@ kramdown:
 owner:
   name: Yash Shah
   # avatar: leonids-logo.png
-  job: "A set of random thoughts (and rants)"
-  bio: "A curious final year CE student"
+  job: "My blog for things I find cool (or annoying)"
+  bio: "Student | Developer | Writer (of sorts)"
   email:
   disqus-shortname: https-yashshah1-github-io-blog
   twitter: #username

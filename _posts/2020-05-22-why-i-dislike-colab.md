@@ -2,7 +2,7 @@
 layout: post
 title: Why I dislike Google Colab
 excerpt: I mean, it's a love-hate kinda thing
-date: 2020-05-22 23:00:00 +0530
+date: 2020-05-23 23:00:00 +0530
 # updated_at: 2020-06-05 12:00:00 +0530
 categories: [tech, experience]
 comments: true
@@ -61,7 +61,7 @@ A mounted drive, by all my experience and intuitions was just supposed to be an 
 
 But that wasn't happening, and I was baffled. Again, like before, a lot of panicked searches later, hoping to see _something_ in the documentation, I come across [this](https://github.com/googlecolab/colabtools/issues/287#issuecomment-478098785). It's a reply from the Colab team on an old issue raised by `@mantou16` (Thank you!)
 
-{% include image.html url="https://yashshah1.github.io/blog/assets/2/async-writes.png" %}
+{% include image.html url="/assets/2/async-writes.png" local=true %}
 
 **What this means is, when I write onto the mounted drive, there is no guarantee when the files _actually_ show up on my drive, it could be in a few seconds or an hour. _OH AND YES_, If you're wondering, if I timeout before that call finishes, then those files vanish. _POOF!_**
 
@@ -87,7 +87,7 @@ It showed me a total training dataset size of **_0 images_**. What? Back to more
 
 Back to googling, luckily this time, the Colab team did have an official solution. Read it in their words [here](https://research.google.com/colaboratory/faq.html#drive-timeout).
 
-{% include image.html url="https://yashshah1.github.io/blog/assets/2/timeout.png" %}
+{% include image.html url="/assets/2/timeout.png" local=true %}
 
 Basically what they say is: I/O operations such as `os.listdir()` on a mounted drive are _asynchronous_ (Ugh, at this point I start to hate this word). This had a two fold problem, not only would the files not get read, my Python code would continue like nothing was wrong. **The least they could do is throw an exception**.
 
@@ -111,7 +111,7 @@ Our effective training time reduced to 12 hours every 2 days or so. So all the g
 
 This problem is listed as the last one because Google warns us quite explicitly that they prefer interactive users. Even for Colab Pro, Google doesn't _guarantee_ a runtime always, they just say that there's a higher chance that you'll get one
 
-{% include image.html url="https://yashshah1.github.io/blog/assets/2/colab-pro.png" %}
+{% include image.html url="/assets/2/colab-pro.png" local=true %}
 
 I just got a little greedy and decided to work around the limitations Google set for me. For a few, I emerged victorious; for others, I humbly accept defeat.
 

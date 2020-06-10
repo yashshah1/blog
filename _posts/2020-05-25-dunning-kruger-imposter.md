@@ -6,6 +6,7 @@ excerpt: There's a good chance this is applicable to you as well.
 categories: [personal]
 comments: true
 ---
+
 **Disclaimer**: _This is an article a little close to home, and it is written with the hopes that at least one person who reads this relates to what I have to say._
 
 **Disclaimer 2**: _This article might get long, and will go on more than one tangent, but I hope to connect all of it at the end._
@@ -22,8 +23,7 @@ When this story reached the eyes of David Dunning, a professor of Psychology at 
 
 > _“The problem with people like this is that they are so stupid that they have no idea how stupid they are… You’ll have to be relatively intelligent to realize how stupid you are.” - John Cleese_
 
-
-{% include image.html url="https://yashshah1.github.io/blog/assets/3/dunning-kruger.svg" sourceurl="https://commons.wikimedia.org/wiki/File:Dunning%E2%80%93Kruger_Effect_01.svg" %}
+{% include image.html url="/assets/3/dunning-kruger.svg" sourceurl="https://commons.wikimedia.org/wiki/File:Dunning%E2%80%93Kruger_Effect_01.svg" local=true %}
 
 It is the relationship between _how good you think you are_ versus _how good you are_.
 
@@ -35,7 +35,7 @@ As time progresses, and as you continue learning about something, you start to r
 
 For those unfamiliar with the phrase, it is a phenomenon in which one doubts their successes/accomplishments. Instead of hard work and skill, their success comes from people’s inability to see that they are a fraud and have been unknowingly deceiving everyone. ([more](https://en.wikipedia.org/wiki/Impostor_syndrome)).
 
-{% include image.html url="https://yashshah1.github.io/blog/assets/3/impostor.png" %}
+{% include image.html url="/assets/3/impostor.png" local=true %}
 
 For anyone who has known me personally, will testify to the fact that I am shy of stepping up to the mantle to claim any spotlight which often gets attributed to the idea that Yash might be underconfident, which isn't the case (most of the times).
 
@@ -53,7 +53,7 @@ To my surprise, my project was graded to be the highest amongst those of the sam
 
 In my humble defence, this is something that is _very very_ popular in the field of Computer Engineering and Software Development.
 
-{% include image.html url="https://yashshah1.github.io/blog/assets/3/google.png" %}
+{% include image.html url="/assets/3/google.png" local=true %}
 
 Everyone is trying to recognize and solve this weird fix they're in, and I can see why it is so common between software developers:
 
@@ -68,8 +68,7 @@ Everyone is trying to recognize and solve this weird fix they're in, and I can s
    - This is bound to make anyone starting out a little (maybe more than a little) overwhelmed.
 
 To wrap it up:
-{% include image.html url="https://yashshah1.github.io/blog/assets/3/impostor-xkcd.png" sourceurl="https://imgs.xkcd.com/comics/impostor_syndrome.png" %}
-
+{% include image.html url="/assets/3/impostor-xkcd.png" sourceurl="https://imgs.xkcd.com/comics/impostor_syndrome.png" local=true %}
 
 # Conclusion
 
