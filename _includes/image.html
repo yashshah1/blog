@@ -1,6 +1,6 @@
 <center>
   <figure class="image">
-    {% if include.base %} {% assign url = base | append: include.url%} {% else
+    {% if include.fullurl %} {% assign url = include.fullurl %} {% else
     %} {% assign url = site.url | append: include.url %} {% endif %}
     <img src="{{ url }}" alt="{{ include.description }}" />
     {% if include.sourceurl %}
