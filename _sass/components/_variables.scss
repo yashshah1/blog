@@ -1,9 +1,18 @@
 /*
  * Global Variables
  */
-
-
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:600,400,400italic|Roboto+Mono);
+
+@font-face {
+  font-family: 'archia';
+  src: url($baseurl + '/fonts/archia/archia-regular-webfont.eot');
+  src: url($baseurl + '/fonts/archia/archia-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url($baseurl + '/fonts/archia/archia-regular-webfont.woff2') format('woff2'),
+       url($baseurl + '/fonts/archia/archia-regular-webfont.woff') format('woff'),
+       url($baseurl + '/fonts/archia/archia-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+};
 
 
 
@@ -20,7 +29,7 @@ $border-width:               .0625rem !default;
 
 //
 
-
+$font-family-post:           "archia";
 $font-family-sans-serif:     "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:      "Roboto Mono", "Courier New", monospace !default;
