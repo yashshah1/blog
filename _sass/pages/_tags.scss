@@ -6,7 +6,7 @@ ul.tag-cloud {
 
   li {
     display: inline-block;
-    margin-right: .5em;
+    margin-right: 0.5em;
     a.post-tag {
       border-radius: 0.2em;
     }
@@ -23,7 +23,7 @@ ul.tag-cloud {
 
     .tag-item {
       padding-left: 1em;
-      margin-bottom: .5em;
+      margin-bottom: 0.5em;
       a {
         color: $text-color;
         &:hover,
@@ -45,7 +45,7 @@ ul.tag-cloud {
 
     .cat-item {
       padding-left: 1em;
-      margin-bottom: .5em;
+      margin-bottom: 0.5em;
       a {
         color: $danger;
         &:hover,

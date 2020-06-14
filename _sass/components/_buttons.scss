@@ -71,7 +71,6 @@
   }
 }
 
-
 .btn-info {
   background-color: $info;
   color: $white;
@@ -85,4 +84,53 @@
     color: $info;
     border-color: $info;
   }
+}
+
+.theme-switch-wrapper {
+  width: 100%;
+  .theme-switch {
+    float: right;
+    // display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+    input {
+      display: none;
+    }
+  }
+}
+
+.slider {
+  background-color: #555;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+  &:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: 0.4s;
+    width: 26px;
+  }
+  &.round {
+    border-radius: 34px;
+    &:before {
+      border-radius: 50%;
+    }
+  }
+}
+
+input:checked + .slider {
+  background-color: #aaa;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
 }

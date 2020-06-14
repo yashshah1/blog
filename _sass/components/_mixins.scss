@@ -23,9 +23,9 @@
  */
 
 @mixin media-query($device) {
-    @media only screen and (min-width: $device) {
-        @content;
-    }
+  @media only screen and (min-width: $device) {
+    @content;
+  }
 }
 
 /**
@@ -50,7 +50,6 @@
   margin-right: auto;
 }
 
-
 /**
  * Hide text overflow and end with ...
  */
@@ -61,48 +60,63 @@
   white-space: nowrap;
 }
 
-
 /* Gradient mixins
    ========================================================================== */
 
-@mixin horizontal($startColor : $white, $endColor : $lightergrey) {
+@mixin horizontal($startColor: $white, $endColor: $lightergrey) {
   background-color: $endColor;
-  background-image  : -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); 
-  background-image  : -webkit-linear-gradient(left, $startColor, $endColor);           
-  background-image  : -moz-linear-gradient(left, $startColor, $endColor);            
-  background-image  : -ms-linear-gradient(left, $startColor, $endColor);             
-  background-image  : -o-linear-gradient(left, $startColor, $endColor);              
-  background-image  : linear-gradient(left, $startColor, $endColor);               
-  background-repeat : repeat-x;
- }
-
-@mixin vertical($startColor : $white, $endColor:  $lightergrey) {
-  background-image  : -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); 
-  background-image  : -webkit-linear-gradient(top, $startColor, $endColor);            
-  background-color  : $endColor;
-  background-image  : -moz-linear-gradient(top, $startColor, $endColor);             
-  background-image  : -ms-linear-gradient(top, $startColor, $endColor);              
-  background-image  : -o-linear-gradient(top, $startColor, $endColor);             
-  background-image  : linear-gradient(top, $startColor, $endColor);                
-  background-repeat : repeat-x;
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    100% 0,
+    from($startColor),
+    to($endColor)
+  );
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+  background-image: -moz-linear-gradient(left, $startColor, $endColor);
+  background-image: -ms-linear-gradient(left, $startColor, $endColor);
+  background-image: -o-linear-gradient(left, $startColor, $endColor);
+  background-image: linear-gradient(left, $startColor, $endColor);
+  background-repeat: repeat-x;
 }
 
-@mixin directional($startColor : $white, $endColor : $lightergrey, $deg : 45deg) {
-  background-color  : $endColor;
-  background-image  : -moz-linear-gradient($deg, $startColor, $endColor);           
-  background-image  : -ms-linear-gradient($deg, $startColor, $endColor);            
-  background-image  : -webkit-linear-gradient($deg, $startColor, $endColor);          
-  background-image  : -o-linear-gradient($deg, $startColor, $endColor);             
-  background-image  : linear-gradient($deg, $startColor, $endColor);              
-  background-repeat : repeat-x;
+@mixin vertical($startColor: $white, $endColor: $lightergrey) {
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    from($startColor),
+    to($endColor)
+  );
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+  background-color: $endColor;
+  background-image: -moz-linear-gradient(top, $startColor, $endColor);
+  background-image: -ms-linear-gradient(top, $startColor, $endColor);
+  background-image: -o-linear-gradient(top, $startColor, $endColor);
+  background-image: linear-gradient(top, $startColor, $endColor);
+  background-repeat: repeat-x;
 }
 
+@mixin directional($startColor: $white, $endColor: $lightergrey, $deg: 45deg) {
+  background-color: $endColor;
+  background-image: -moz-linear-gradient($deg, $startColor, $endColor);
+  background-image: -ms-linear-gradient($deg, $startColor, $endColor);
+  background-image: -webkit-linear-gradient($deg, $startColor, $endColor);
+  background-image: -o-linear-gradient($deg, $startColor, $endColor);
+  background-image: linear-gradient($deg, $startColor, $endColor);
+  background-repeat: repeat-x;
+}
 
-@mixin bordered($top-color: #eee, $right-color: #eee, $bottom-color: #eee, $left-color: #eee) {
-  border-top : solid 1px $top-color;
-  border-left : solid 1px $left-color;
-  border-right : solid 1px $right-color;
-  border-bottom : solid 1px $bottom-color;
+@mixin bordered(
+  $top-color: #eee,
+  $right-color: #eee,
+  $bottom-color: #eee,
+  $left-color: #eee
+) {
+  border-top: solid 1px $top-color;
+  border-left: solid 1px $left-color;
+  border-right: solid 1px $right-color;
+  border-bottom: solid 1px $bottom-color;
 }
 
 /* Rounded corners
@@ -113,8 +127,8 @@
  * example: @include rounded(4px);
  */
 
-@mixin rounded($radius:4px) {
-  border-radius : $radius;
+@mixin rounded($radius: 4px) {
+  border-radius: $radius;
 }
 
 /**
@@ -122,7 +136,12 @@
  * example: @include border-radius(4px, 0, 0, 4px);
  */
 
-@mixin border-radius($topright: 0, $bottomright: 0, $bottomleft: 0, $topleft: 0) {
+@mixin border-radius(
+  $topright: 0,
+  $bottomright: 0,
+  $bottomleft: 0,
+  $topleft: 0
+) {
   border-top-right-radius: $topright;
   border-bottom-right-radius: $bottomright;
   border-bottom-left-radius: $bottomleft;
@@ -159,8 +178,9 @@
  * example: @include text-shadow(0 2px 3px rgba(0,0,0,.25));
  */
 
-@mixin text-shadow($shadow: 0 2px 3px rgba(0,0,0,.25)) {
-text-shadow: $shadow; }
+@mixin text-shadow($shadow: 0 2px 3px rgba(0, 0, 0, 0.25)) {
+  text-shadow: $shadow;
+}
 
 /**
  * Opacity
@@ -244,10 +264,9 @@ text-shadow: $shadow; }
 
 @mixin animation($name, $duration: 300ms, $delay: 0, $ease: ease) {
   -webkit-animation: $name $duration $delay $ease;
-  -moz-animation:    $name $duration $delay $ease;
-  -ms-animation:     $name $duration $delay $ease;
+  -moz-animation: $name $duration $delay $ease;
+  -ms-animation: $name $duration $delay $ease;
 }
-
 
 /**
  * Box-sizing
@@ -260,7 +279,6 @@ text-shadow: $shadow; }
   -ms-box-sizing: $boxsize;
   box-sizing: $boxsize;
 }
-
 
 /**
  * Hide from visual and speaking browsers

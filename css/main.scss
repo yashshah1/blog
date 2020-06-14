@@ -1,26 +1,23 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+
 $baseurl: "{{ site.url }}";
 @charset "UTF-8";
 
-
 @import "components/mixins";
-
 
 @import "components/variables";
 
-
 @import "components/normalize";
 
-
 @import "components/global";
+@import "components/darkmode";
 @import "components/helpers";
 @import "components/grid";
 @import "components/typography";
 @import "components/buttons";
 @import "components/syntax-highlighting";
-
 
 @import "pages/layout";
 @import "pages/tags";

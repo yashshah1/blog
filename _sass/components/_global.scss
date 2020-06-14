@@ -18,7 +18,6 @@ img {
   margin-right: auto;
 }
 
-
 table,
 th,
 td {
@@ -55,7 +54,7 @@ table {
     }
   }
   &.highlight > tbody > tr {
-    @include transition(background-color .25s ease);
+    @include transition(background-color 0.25s ease);
     &:hover {
       background-color: $table-striped-color;
     }
@@ -83,7 +82,6 @@ tfoot {
   border-top: 1px solid $table-border-color;
 }
 
-
 b,
 i,
 strong,
@@ -99,9 +97,8 @@ h2,
 header,
 input,
 a {
-  @include transition(all .1s ease);
+  @include transition(all 0.1s ease);
 }
-
 
 footer {
   text-align: center;
@@ -111,6 +108,7 @@ footer {
     text-shadow: 0 0 5px $white, 0 0 10px $danger;
   }
 }
+
 .related-articles {
   margin-top: 2em;
   h4 {
@@ -123,24 +121,23 @@ footer {
   }
 }
 
-
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 6px;
+  width: 4px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.5);
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
 }

@@ -2,7 +2,7 @@
   #timeline {
     position: relative;
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: -2px;
@@ -16,7 +16,6 @@
       clear: both;
     }
   }
-
   .archive-title {
     position: relative;
     margin: 2em auto 1em;
@@ -36,7 +35,6 @@
       }
     }
   }
-
 
   ul {
     list-style: none;

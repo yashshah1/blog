@@ -2,7 +2,7 @@
 layout: post
 title: Hacking my virtual memory
 date: 2020-06-13 20:00:00 +0530
-excerpt: More interesting than it sounds, I promise!  
+excerpt: More interesting than it sounds, I promise!
 categories: [tech, code]
 comments: true
 read_time: 15
@@ -40,7 +40,7 @@ But any version of Linux and Python3.x should work in theory, let me know if it 
 - Memory Address: A number that uniquely identifies where your data is stored in a storage device.
 - Process: Fancy word used for a program (this definition is limited to the scope of this article).
 - PID / Process ID - A unique number that identifies each process running in your system.
-  
+
 ## Virtual Memory
 
 In computing, virtual memory is a memory management technique, that abstracts the physical storage that you have. It maps memory addresses used by a program (called the Virtual Memory) into actual physical memory addresses used by storage devices.
@@ -73,21 +73,23 @@ We want a very basic C program that will create a string and store it in the hea
 #include <string.h>
 
 int main() {
-  char s[] = "ThisIsAGoodStArt";
-  char *ptr = malloc(sizeof(char) * 17);
-  strcpy(ptr, s);
-  printf("%s", ptr);
+char s[] = "ThisIsAGoodStArt";
+char _ptr = malloc(sizeof(char) _ 17);
+strcpy(ptr, s);
+printf("%s", ptr);
 
-  return 0;
+return 0;
 }
 {% endhighlight %}
 
 Running this gives us what we'd expect, just the string nothing else.
+
 ```
 ThisIsAGoodStArt
 ```
 
-Okay, now we need a few other things too. 
+Okay, now we need a few other things too.
+
 - We know that each process has its own virtual memory, so we need to find out that the process id of this process is.
 - As soon as this program ends, the string is removed from the memory by the OS, which serves us no good. So we need to run this program for as long as we want.
 - We also want to get the location of the string in the virtual memory, we probably won't use it, but it'll be a good thing to have.
@@ -104,24 +106,25 @@ So let's make those changes.
 
 int main() {
 
-  char s[] = "ThisIsAGoodStArt";
-  char *ptr = malloc(sizeof(char) * 17);
-  int i = 0;
+char s[] = "ThisIsAGoodStArt";
+char _ptr = malloc(sizeof(char) _ 17);
+int i = 0;
 
-  printf("The process id is: %d\n", (int) getpid());
+printf("The process id is: %d\n", (int) getpid());
 
-  strcpy(ptr, s);
+strcpy(ptr, s);
 
-  while(++i) {
-    printf("#%d - %s : %p\n", i, ptr, ptr);
-    sleep(1);
-  }
+while(++i) {
+printf("#%d - %s : %p\n", i, ptr, ptr);
+sleep(1);
+}
 
-  return 0;
+return 0;
 }
 {% endhighlight %}
 
 After which we get the following output that runs forever:
+
 ```
 The process id is: 32612
 #1 - ThisIsAGoodStArt : 0x558bfee292a0
@@ -132,6 +135,7 @@ The process id is: 32612
 #6 - ThisIsAGoodStArt : 0x558bfee292a0
 ...
 ```
+
 Now, if you try and run this, you _*will*_ end up getting different numbers (Seriously, it is impossible for you to get the same exact output). Infact, you probably will get different number every time you run it.
 
 Now we know that the process id is 32612, and the string in our memory starts from somewhere around `0x558a5508c2a0` (This is a base 16 number).
@@ -139,13 +143,15 @@ Now we know that the process id is 32612, and the string in our memory starts fr
 Cool. So far so good.
 
 # /proc - This is seriously cool stuff.
-The /proc directory in a Linux System, according to me is the coolest directory to mess around with. It's a trove of information for all the processes running in your computer. 
+
+The /proc directory in a Linux System, according to me is the coolest directory to mess around with. It's a trove of information for all the processes running in your computer.
 
 **Nerd Talk**: /proc isn't a regular directory, but a virtual file system. It doesn't contain real files but runtime information about your entire system. _Again, how cool is that?_
 
 The /proc directory has a lot of folders, each corresponding to a individual process. Here's mine:
+
 <div>
-<pre><font color="#4E9A06"><b>➜  </b></font><font color="#06989A"><b>~</b></font> ls /proc
+<pre class="inline-code"><font color="#4E9A06"><b>➜  </b></font><font color="#06989A"><b>~</b></font> ls /proc
 <font color="#3465A4"><b>1</b></font>     <font color="#3465A4"><b>1094</b></font>   <font color="#3465A4"><b>13</b></font>    <font color="#3465A4"><b>1408</b></font>  <font color="#3465A4"><b>1590</b></font>  <font color="#3465A4"><b>166</b></font>    <font color="#3465A4"><b>177</b></font>    <font color="#3465A4"><b>1834</b></font>   <font color="#3465A4"><b>20</b></font>     <font color="#3465A4"><b>2192</b></font>   <font color="#3465A4"><b>1095</b></font>  <font color="#3465A4"><b>2401</b></font>   <font color="#3465A4"><b>26752</b></font>  <font color="#3465A4"><b>281</b></font>    <font color="#3465A4"><b>28904</b></font>  <font color="#3465A4"><b>3125</b></font>  <font color="#3465A4"><b>3834</b></font>  <font color="#3465A4"><b>48</b></font>    <font color="#3465A4"><b>54</b></font>    <font color="#3465A4"><b>60</b></font>   <font color="#3465A4"><b>acpi</b></font>         iomem        mtrr           <font color="#3465A4"><b>tty</b></font>
 <font color="#3465A4"><b>10</b></font>    <font color="#3465A4"><b><mark>32612</mark></b></font>   <font color="#3465A4"><b>1300</b></font>  <font color="#3465A4"><b>1440</b></font>  <font color="#3465A4"><b>1592</b></font>  <font color="#3465A4"><b>167</b></font>    <font color="#3465A4"><b>1773</b></font>   <font color="#3465A4"><b>18369</b></font>  <font color="#3465A4"><b>202</b></font>    <font color="#3465A4"><b>21921</b></font>  <font color="#3465A4"><b>2347</b></font>  <font color="#3465A4"><b>2405</b></font>   <font color="#3465A4"><b>26963</b></font>  <font color="#3465A4"><b>282</b></font>    <font color="#3465A4"><b>28955</b></font>  <font color="#3465A4"><b>3165</b></font>  <font color="#3465A4"><b>39</b></font>    <font color="#3465A4"><b>4856</b></font>  <font color="#3465A4"><b>5402</b></font>  <font color="#3465A4"><b>622</b></font>  <font color="#3465A4"><b>asound</b></font>       ioports      <font color="#06989A"><b>net</b></font>            uptime
 <font color="#3465A4"><b>1055</b></font>  <font color="#3465A4"><b>1097</b></font>   <font color="#3465A4"><b>1302</b></font>  <font color="#3465A4"><b>1445</b></font>  <font color="#3465A4"><b>1594</b></font>  <font color="#3465A4"><b>16715</b></font>  <font color="#3465A4"><b>1776</b></font>   <font color="#3465A4"><b>18399</b></font>  <font color="#3465A4"><b>2056</b></font>   <font color="#3465A4"><b>21927</b></font>  <font color="#3465A4"><b>2348</b></font>  <font color="#3465A4"><b>2425</b></font>   <font color="#3465A4"><b>27</b></font>     <font color="#3465A4"><b>283</b></font>    <font color="#3465A4"><b>29</b></font>     <font color="#3465A4"><b>3171</b></font>  <font color="#3465A4"><b>4</b></font>     <font color="#3465A4"><b>50</b></font>    <font color="#3465A4"><b>559</b></font>   <font color="#3465A4"><b>63</b></font>   buddyinfo    <font color="#3465A4"><b>irq</b></font>          pagetypeinfo   version
@@ -168,7 +174,7 @@ The /proc directory has a lot of folders, each corresponding to a individual pro
 </div>
 Each item listed in a dark blue colour is a folder, and the name corresponds to the PID of the process. Now we know the process ID of our process is `32612`, so lets peek inside that folder. 
 <div>
-<pre><font color="#4E9A06"><b>➜  </b></font><font color="#06989A"><b>32612</b></font> ls
+<pre class="inline-code"><font color="#4E9A06"><b>➜  </b></font><font color="#06989A"><b>32612</b></font> ls
 arch_status      environ    mountinfo      personality   statm
 <font color="#3465A4"><b>attr</b></font>             <font color="#06989A"><b>exe</b></font>        mounts         projid_map    status
 autogroup        <font color="#3465A4"><b>fd</b></font>         mountstats     <font color="#06989A"><b>root</b></font>          syscall
@@ -184,11 +190,14 @@ cpuset           maps       pagemap        stack
 </div>
 
 For our project we only need to look at two files:
+
 - /proc/32612/maps
 - /proc/32612/mem
 
 ## /proc/pid/maps
+
 From `man proc` (Basically a manual page)
+
 ```
   /proc/[pid]/maps
         A  file containing the currently mapped memory regions and their
@@ -197,7 +206,8 @@ From `man proc` (Basically a manual page)
 ```
 
 Okay, fancy stuff aside. Let's take a look at what my maps file looks like.
-<pre><font color="#4E9A06"><b>➜  </b></font><font color="#06989A"><b>~</b></font> cat /proc/32612/maps
+
+<pre class="inline-code"><font color="#4E9A06"><b>➜  </b></font><font color="#06989A"><b>~</b></font> cat /proc/32612/maps
 558bfe5ca000-558bfe5cb000 r--p 00000000 08:04 1705261                    /home/yash/git_projects/blog/a.out
 558bfe5cb000-558bfe5cc000 r-xp 00001000 08:04 1705261                    /home/yash/git_projects/blog/a.out
 558bfe5cc000-558bfe5cd000 r--p 00002000 08:04 1705261                    /home/yash/git_projects/blog/a.out
@@ -226,29 +236,33 @@ ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsysca
 Okay, breathe in.
 
 We see the `[heap]`, that sounds familiar. This line:
+
 ```
 558bfee29000-558bfee4a000 rw-p 00000000 00:00 0                          [heap]
 ```
-- `558bfee29000-558bfee4a000`: This is the address range of the heap for our program. Now going back to our code, we see that our string is stored at `0x558bfee292a0`, Now `0x558bfee29000 < 0x558bfee292a0 < 0x558bfee4a000`, which means now we have substantial proof that our string is somewhere in the heap. Good.
-- The `rw` signifies that our program can read and write to this section (Duh!). 
 
+- `558bfee29000-558bfee4a000`: This is the address range of the heap for our program. Now going back to our code, we see that our string is stored at `0x558bfee292a0`, Now `0x558bfee29000 < 0x558bfee292a0 < 0x558bfee4a000`, which means now we have substantial proof that our string is somewhere in the heap. Good.
+- The `rw` signifies that our program can read and write to this section (Duh!).
 
 ## /proc/pid/mem
+
 From `man proc`
+
 ```
   /proc/[pid]/mem
       This file can be used to access the pages of a process's  memory
       through open(2), read(2), and lseek(2).
 ```
+
 For people who haven't had a **mindblow** yet: The man page tells us /proc/pid/mem allows us access to the processors virtual memory like it's any other file on your PC, no special mumbojumbo.
 
 Isn't that really really cool? (_Rhetorical_)
 
 So, what do we have to do. Write a Python script which:
+
 - Locates the addresses of the heap from `/proc/pid/maps`,
 - Finds where our string is located in the heap, and
 - Overwrite it. Simple!
-
 
 _For anyone who wants to give this a shot on their own, stop reading here._
 
@@ -267,7 +281,7 @@ NOTE: YOU MIGHT HAVE TO RUN THIS WITH SUDO
 """
 from sys import argv
 
-_, pid, initial_string, new_string = argv[:4]
+\_, pid, initial_string, new_string = argv[:4]
 
 maps_filename = "/proc/{}/maps".format(pid)
 mem_filename = "/proc/{}/mem".format(pid)
@@ -276,16 +290,15 @@ maps_file = open(maps_filename, 'r')
 
 maps_file_line = maps_file.readline()
 
-while maps_file_line:
-  temp = maps_file_line.split()
-  if temp[-1] != "[heap]":
-    # If the line isn't describing the heap, move on.
-    maps_file_line = maps_file.readline()
-  else:
-    print("* Found the heap")
-    addr_range, perm, offset, dev, inode, path = temp
-    print("* Address range: ", addr_range)
-    print("* Permissions: ", perm)
+while maps*file_line:
+temp = maps_file_line.split()
+if temp[-1] != "[heap]": # If the line isn't describing the heap, move on.
+maps_file_line = maps_file.readline()
+else:
+print("* Found the heap")
+addr*range, perm, offset, dev, inode, path = temp
+print("* Address range: ", addr_range)
+print("\* Permissions: ", perm)
 
     try:
       assert('r' in perm and 'w' in perm) # Making sure we have all the permissions.
@@ -293,7 +306,7 @@ while maps_file_line:
       print("Couldn't find permissions, try running with sudo?")
       maps_file.close()
       exit(1)
-    
+
     low, high = addr_range.split("-") # Getting the addresses of my heap
     low = int(low, 16) # Getting it from Base 16
     high = int(high, 16) # Getting it from Base 16
@@ -321,27 +334,28 @@ while maps_file_line:
       maps_file.close()
       mem_file.close()
       exit(1)
-    
+
     print("* Found {}".format(initial_string))
 
     print("* Writing {} in the heap".format(new_string))
 
     # We want to start writing our new string where
     # the old string is stored, which is at (low + start_index)
-    mem_file.seek(low + start_index) 
+    mem_file.seek(low + start_index)
     mem_file.write(bytes(new_string, "ASCII"))
 
     maps_file.close()
     mem_file.close()
-  
+
     break
+
 {% endhighlight %}
 
 # The magic
 
 So I run my program as
 
-<pre><font color="#4E9A06"><b>➜  </b></font><font color="#06989A"><b>~</b></font> sudo python3 script.py 32612 ThisIsAGoodStArt ThisIsAmazing
+<pre class="inline-code"><font color="#4E9A06"><b>➜  </b></font><font color="#06989A"><b>~</b></font> sudo python3 script.py 32612 ThisIsAGoodStArt ThisIsAmazing
 * Found the heap
 * Address range:  558bfee29000-558bfee4a000
 * Permissions:  rw-p
@@ -352,6 +366,7 @@ The heap ends at: 94059765211136
 </pre>
 
 And back where my C code was executing, I see the magic.
+
 ```
 ...
 #2456 - ThisIsAGoodStArt : 0x558bfee292a0
@@ -365,6 +380,7 @@ And back where my C code was executing, I see the magic.
 #2464 - ThisIsAmazingArt : 0x558bfee292a0
 #2465 - ThisIsAmazingArt : 0x558bfee292a0
 ```
+
 {% include image.html url="/assets/5/mind-blow.gif" %}
 
 **WOHOOOOOOOOOOO!**
@@ -374,15 +390,14 @@ And back where my C code was executing, I see the magic.
 The string now reads and prints `ThisIsAmazingArt` (which it is, undeniably 😉) because we merely overwrote a part of the heap with our content, and didn't replace the whole string. Which is why `Art` is still stored in the heap. For better results try using strings of the same length.
 
 # Serious Talk Time
-Now, even though this is very fun for a side project, it has a few _very_ serious implications and things you should steer away from. 
+
+Now, even though this is very fun for a side project, it has a few _very_ serious implications and things you should steer away from.
+
 - Like our C program stored a dumb string in memory, know that usually a lot of important things are stored in program memory too, passwords, sensitive details etc., and all of them are usually accessible using the above method; so refrain from running programs with `sudo` or `Run as Administrator` on Windows unless you really trust it (Yes, Mr A, I'm looking at you too).
 - A few of you reading this, with some experience in development might argue that passwords are hashed and not stored in the plain form, well yes, they are. That just prevents the malicious program from knowing what your password is, it doesn't stop it from replacing it in the memory with a different hash (which happen to be of the same size xD).
 
 If any of you find any bugs, or have any suggestions/feedback, please feel free to reach out to me on [LinkedIn](https://www.linkedin.com/in/yashshah13/) or via [email](mailto:yashah1234@gmail.com)
 
-
 Also, the source codes for this project are available on [GitHub](https://github.com/yashshah1/hack-my-memory)
 
 This is all for you, for now!
-
-
