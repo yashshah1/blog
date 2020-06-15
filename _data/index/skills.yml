@@ -2,5 +2,5 @@
 
 label: Ability
 id: cs
-aspects: Motivation, HTML/CSS, Javascript, Python, Full Stack, Data Science
-percentage: 100, 60, 70, 70, 80, 60
+aspects: MERN, LAMP, Data Science, Software Design, TypeScript, Python
+percentage: 70, 70, 80, 70, 60, 80
