@@ -68,6 +68,17 @@ body.dark-mode {
       border-color: $primary;
     }
   }
+  #search-input {
+    background: #212121;
+    color: #a4b1d1;
+    &::placeholder {
+      color: #c9d9fa;
+    }
+    &:focus {
+      outline: none;
+      border-color: #7063b3;
+    }
+  }
 }
 
 .change {

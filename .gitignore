@@ -7,3 +7,4 @@ _drafts
 Gemfile.lock
 vendor
 * copy*
+*-draft.md

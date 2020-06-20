@@ -10,12 +10,16 @@ if (workbox) {
     expiration: { ExpirationPlugin },
   } = workbox;
 
+  self.addEventListener("install", function (e) {
+    self.skipWaiting();
+  });
+
   registerRoute(
     ({ request: { destination } }) => destination === "style",
     new StaleWhileRevalidate({
       cacheName: "css-cache",
       plugins: [
-        new ExpirationPlugin({ maxEntries: 20 }),
+        new ExpirationPlugin({ maxEntries: 10 }),
         new CacheableResponsePlugin({ statuses: [0, 200] }),
       ],
     })
@@ -26,7 +30,7 @@ if (workbox) {
     new StaleWhileRevalidate({
       cacheName: "js-cache",
       plugins: [
-        new ExpirationPlugin({ maxEntries: 20 }),
+        new ExpirationPlugin({ maxEntries: 10 }),
         new CacheableResponsePlugin({ statuses: [0, 200] }),
       ],
     })

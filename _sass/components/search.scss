@@ -1,0 +1,21 @@
+#search-input {
+  width: 100%;
+  padding: 8px 16px;
+  line-height: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 6px;
+  -webkit-appearance: none;
+  color: #53638a;
+  border: 1px solid #cdd9ed;
+  background: white;
+  transition: border 0.3s ease;
+  &::placeholder {
+    color: #4b4f57;
+  }
+  &:focus {
+    outline: none;
+    border-color: #8d7edc;
+  }
+}

@@ -13,11 +13,13 @@ $baseurl: "{{ site.url }}";
 
 @import "components/global";
 @import "components/darkmode";
+@import "components/custom";
 @import "components/helpers";
 @import "components/grid";
 @import "components/typography";
 @import "components/buttons";
 @import "components/syntax-highlighting";
+@import "components/search";
 
 @import "pages/layout";
 @import "pages/tags";

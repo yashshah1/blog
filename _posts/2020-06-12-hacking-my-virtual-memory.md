@@ -26,6 +26,7 @@ While I'm writing this, I have no idea how I'm going to do what I want to do; I 
 - Python 3.8
 
 But any version of Linux and Python3.x should work in theory, let me know if it doesn't.
+**Note:** To run this, you need admin (sudo) access on your machine.
 
 ## Prerequisites
 
@@ -281,7 +282,7 @@ NOTE: YOU MIGHT HAVE TO RUN THIS WITH SUDO
 """
 from sys import argv
 
-\_, pid, initial_string, new_string = argv[:4]
+_, pid, initial_string, new_string = argv[:4]
 
 maps_filename = "/proc/{}/maps".format(pid)
 mem_filename = "/proc/{}/mem".format(pid)

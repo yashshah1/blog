@@ -137,7 +137,7 @@ input:checked + .slider {
   margin-top: 9px;
   margin-left: 8px;
   float: left;
-  display: inline-block;
+  display: none;
 }
 
 #sun-fa {
@@ -145,5 +145,5 @@ input:checked + .slider {
   margin-right: 4px;
   color: white;
   float: right;
-  display: none;
+  display: inline-block;
 }
