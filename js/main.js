@@ -39,10 +39,18 @@ $(document).ready(function () {
   console.log(`Why are you here? Don't try and do funny stuff`);
 });
 
+function showToast() {
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
 async function copyToClipboard() {
   const result = await navigator.permissions.query({ name: "clipboard-write" });
-  if (result.state === "granted" || result.state === "prompt")
+  if (result.state === "granted" || result.state === "prompt") {
     navigator.clipboard.writeText(window.location.href);
+    showToast();
+  }
   return true;
 }
 

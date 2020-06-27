@@ -68,10 +68,10 @@ layout: default
     </li>
     <li>
       <button class="btn" title="Copy to clipboard" target="_blank" onclick="shareArticle()"><i class="fa fa-clipboard"></i><span>Copy URL</span></button>
-    </li>
+		</li>
   </ul>
+  <div id="snack_container"><span id="snackbar">Copied to clipboard</span></div>
 </div><!-- end share-buttons -->
-
 {% if site.owner.disqus-shortname and page.comments == true %}
 <div id="disqus_thread"></div>
 {% include disqus.html %}
