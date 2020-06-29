@@ -22,3 +22,22 @@
     fuzzy: true,
   });
 </script>
+<script>
+  (() => {
+    const search = document.getElementById("search-input");
+    const searchContainer = document.getElementById("search-container");
+    const parent = searchContainer.parentElement;
+    const e = document.createElement("hr");
+    e.setAttribute("id", "search-divider");
+    let isPresent = false;
+    search.addEventListener("input", ({ target: { value } }) => {
+      if (value === "") {
+        if (isPresent) parent.children[1].remove();
+        isPresent = false;
+      } else if (!isPresent) {
+        parent.insertBefore(e, searchContainer.nextSibling);
+        isPresent = true;
+      }
+    });
+  })();
+</script>
