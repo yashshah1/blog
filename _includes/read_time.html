@@ -1,12 +1,15 @@
 <span class="read-time" title="Estimated read time">
   {% if page.read_time %}
     {{page.read_time}} mins read
+    {% if page.words %}
+    ({{page.words}} words)
+  {% endif %}
   {% else %}
   {% assign words = content | number_of_words %}
   {% if words < 360 %}
     1 min read
   {% else %}
-    {{ words | divided_by:180 }} mins read
+    {{ words | divided_by:250 }} mins read
   {% endif %}
   ({{words}} words)
   {% endif %}
