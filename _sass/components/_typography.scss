@@ -23,14 +23,16 @@ html {
 blockquote {
   display: block;
   position: relative;
+  background: #f5f2fc;
   padding-left: 20px;
   font-style: italic;
   border-left: 5px solid $secondary;
+  margin-inline-start: 20px;
+  margin-inline-end: 20px;
+  p {
+    margin-right: 10px;
+  }
 }
-
-//
-
-//
 
 a {
   text-decoration: none;

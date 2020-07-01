@@ -6,9 +6,8 @@ pre,
 code {
   font-family: $font-family-monospace;
   color: #525252;
-  font-size: 0.9em;
   background-color: #f8f8f8;
-  font-size: ($font-size-base - 3);
+  font-size: ($font-size-base - 2);
 }
 code {
   color: #e96900;
@@ -154,7 +153,7 @@ pre code {
     color: #bb4444;
   } /* Literal.String */
   .na {
-    color: #bb4444;
+    color: #f45252;
   } /* Name.Attribute */
   .nb {
     color: #aa22ff;
@@ -201,7 +200,7 @@ pre code {
     color: #bbbbbb;
   } /* Text.Whitespace */
   .mf {
-    color: #666666;
+    color: #333;
   } /* Literal.Number.Float */
   .mh {
     color: #666666;
