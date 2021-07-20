@@ -282,7 +282,7 @@ const flip = () => Math.random();
 const Probability = () => {
     const [probability, setProbability] = useState(flip());
     const handleClick = () => setProbability(flip());
-    const RenderComponent = this.props.renderComponent;
+    const RenderComponent = props.renderComponent;
     
     return (
       <RenderComponent
