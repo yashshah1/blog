@@ -218,26 +218,21 @@ const coinFlip = ({ showLabels = false }) =>
 Okayy, I guess? But stuff is starting to get ugly.
 
 ```javascript
+import { useState } from "react"
 const flip = () => Math.random();
 
-class CoinFlip extends React.Component {
-  static defaultProps = {
-    showLabels: false, // yeah we need to take care of this too
-    showButton: false,
-  };
-  state = {
-    probability: flip(),
-  };
-  handleClick = () => {
-    this.setState({ probability: flip() });
-  };
-  render() {
+const CoinFlip = (props) => {
+    const { showLabels, showButton } = props
+    const [probability, setProbability] = useState(flip());
+    
+    const handleClick = () => setProbability(flip());
+    
     return (
       <>
-        {this.props.showButton && (
+        {showButton && (
           <button onClick={this.handleClick}>Flip!</button>
         )}
-        {this.state.probability < 0.5 ? (
+        {probability < 0.5 ? (
           <>
             <img src="/heads.png" alt="Heads" />
             {showLabels && <span>Heads</span>}
@@ -249,9 +244,13 @@ class CoinFlip extends React.Component {
           </>
         )}
       </>
-    );
-  }
+    ); 
 }
+
+CoinFlip.defaultProps = {
+    showLabels: false, // yeah we need to take care of this too
+    showButton: false,
+};
 ```
 <br />
 
@@ -277,37 +276,32 @@ We know that the right way of doing it is to somehow separate out the UI from th
 Let's take a look at what the mechanism could be, when it's separated from the UI
 
 ```javascript
+import { useState } from "react"
 const flip = () => Math.random();
-class Probability extends React.Component {
-  static propTypes = {
-    component: PropTypes.element,
-  };
-  state = {
-    probability: flip(),
-  };
-  handleClick = () => {
-    this.setState({ probability: flip() });
-  };
-  render() {
+
+const Probability = () => {
+    const [probability, setProbability] = useState(flip());
+    const handleClick = () => setProbability(flip());
     const RenderComponent = this.props.renderComponent;
+    
     return (
       <RenderComponent
-        rerun={this.handleClick}
-        result={this.state.probability}
+        rerun={handleClick}
+        result={probability}
       />
     );
-  }
 }
+
 ```
 
 So this is a component that only takes care of running the mechanism, and relies solely on another component to display the result. Let's take a look as to how that would be.
 
 ```javascript
-class CoinFlip extends React.Component {
-  render() {
+
+const CoinFlip = (props) => {
     return (
       <>
-        {this.props.result < 0.5 ? (
+        {props.result < 0.5 ? (
           <img src="/heads.png" alt="Heads" /> // 1.
         ) : (
           <>
@@ -317,13 +311,10 @@ class CoinFlip extends React.Component {
         )}
       </>
     );
-  }
 }
-class App extends React.Component {
-  render() {
-    return <Probability renderComponent={CoinFlip} />;
-  }
-}
+
+const App = () => <Probability renderComponent={CoinFlip} />
+
 ```
 
 1. If we don't need to be shown a label for one case, it is easily possible.
@@ -333,21 +324,14 @@ Similarly, not showing the button is equally configurable. Perfect!
 All we need to do is pass our Display component to the Probability class, and our functionality is up and running. Let's try to tackle the DiceRoll problem now.
 
 ```javascript
-class DiceRoll extends React.Component {
-  render() {
-    return (
-      <>
-        <p> The outcome is {Math.ceil(this.props.result * 6)} </p> // 1.
-        <button onDoubleClick={this.props.rerun}>Try me again</button> 
-      </>
-    );
-  }
-}
-class App extends React.Component {
-  render() {
-    return <Probability renderComponent={DiceRoll} />; // 2.
-  }
-}
+const DiceRoll = (props) => (
+    <>
+        <p> The outcome is {Math.ceil(props.result * 6)} </p> 
+        <button onDoubleClick={props.rerun}>Try me again</button> // 1.
+    </>
+)
+
+const App = () => <Probability renderComponent={DiceRoll} /> // 2.
 ```
 
 1. If you notice, we now trigger a re run on the **double click** of the button, and not a single click with no extra effort.
