@@ -4,7 +4,7 @@
 ####################################
 #
 title: Yash Shah's blog
-email: yashah1234@gmail.com
+email: hello@yashs.dev
 description: My blog for things I find interesting.
 url: https://blog.yashs.dev
 keywords: ["blog", "jekyll"]
@@ -14,7 +14,7 @@ keywords: ["blog", "jekyll"]
 # Jekyll configuration
 ####################################
 #
-timezone: Asia/Calcutta
+timezone: America/Los Angeles
 markdown: kramdown
 highlighter: rouge
 excerpt_separator: <!--more-->
